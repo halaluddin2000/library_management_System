@@ -43,3 +43,69 @@ BooksRoutes.get("/", async (req: Request, res: Response) => {
     });
   }
 });
+
+BooksRoutes.get("/:bookId", async (req: Request, res: Response) => {
+  try {
+    const bookId = req.params.bookId;
+    const book = await Book.findById(bookId);
+
+    res.status(201).json({
+      success: true,
+      message: "Book retrieved successfully",
+      book,
+    });
+  } catch (error: any) {
+    console.log(error);
+    res.status(400).json({
+      success: false,
+      message: error.message,
+      error,
+    });
+  }
+});
+
+//update Books
+BooksRoutes.patch("/:bookId", async (req: Request, res: Response) => {
+  try {
+    const bookId = req.params.bookId;
+    const updateBody = req.body;
+    const book = await Book.findByIdAndUpdate(bookId, updateBody, {
+      new: true,
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "Book updated successfully",
+      book,
+    });
+  } catch (error: any) {
+    console.log(error);
+    res.status(400).json({
+      success: false,
+      message: error.message,
+      error,
+    });
+  }
+});
+
+//----Delete Books
+BooksRoutes.delete("/:bookId", async (req: Request, res: Response) => {
+  try {
+    const bookId = req.params.bookId;
+    // const updateBody = req.body;
+    const book = await Book.findOneAndDelete({ _id: bookId });
+
+    res.status(201).json({
+      success: true,
+      message: "Book deleted successfully",
+      book,
+    });
+  } catch (error: any) {
+    console.log(error);
+    res.status(400).json({
+      success: false,
+      message: error.message,
+      error,
+    });
+  }
+});
