@@ -27,12 +27,29 @@ BooksRoutes.post("/create-book", async (req: Request, res: Response) => {
 
 BooksRoutes.get("/", async (req: Request, res: Response) => {
   try {
-    const books = await Book.find();
+    //----------filter: Filter by genre
+    // const booksGenre = req.query.genre ? req.query.genre : "";
+    // let books = [];
+    // if ((books = await Book.find({ genre: booksGenre }))) {
+    // } else {
+    //   books = await Book.find();
+    // }
+
+    //----------sort: asc or desc
+
+    //const book = await Book.find().sort({ genre: 1 });
+    //const book = await Book.find().sort({ genre: -1 });
+
+    // -----------limit: Number of results (default: 10)
+    const book = await Book.find().limit(10);
+
+    //----------all books find
+    // const books = await Book.find();
 
     res.status(201).json({
       success: true,
-      message: "Books data created successfuly",
-      books,
+      message: "Books retrieved successfully",
+      book,
     });
   } catch (error: any) {
     console.log(error);
