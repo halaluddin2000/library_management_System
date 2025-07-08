@@ -11,7 +11,7 @@ BooksRoutes.post("/create-book", async (req: Request, res: Response) => {
     res.status(201).json({
       success: true,
       message: "Books data created successfuly",
-      book: book,
+      data: book,
     });
   } catch (error: any) {
     console.log(error);
@@ -49,7 +49,7 @@ BooksRoutes.get("/", async (req: Request, res: Response) => {
     res.status(201).json({
       success: true,
       message: "Books retrieved successfully",
-      book,
+      data: book,
     });
   } catch (error: any) {
     console.log(error);
@@ -69,7 +69,7 @@ BooksRoutes.get("/:bookId", async (req: Request, res: Response) => {
     res.status(201).json({
       success: true,
       message: "Book retrieved successfully",
-      book,
+      data: book,
     });
   } catch (error: any) {
     console.log(error);
@@ -93,7 +93,7 @@ BooksRoutes.patch("/:bookId", async (req: Request, res: Response) => {
     res.status(201).json({
       success: true,
       message: "Book updated successfully",
-      book,
+      data: book,
     });
   } catch (error: any) {
     console.log(error);
@@ -115,7 +115,7 @@ BooksRoutes.delete("/:bookId", async (req: Request, res: Response) => {
     res.status(201).json({
       success: true,
       message: "Book deleted successfully",
-      book,
+      data: book,
     });
   } catch (error: any) {
     console.log(error);

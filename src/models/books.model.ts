@@ -27,7 +27,4 @@ bookSchema.statics.findAvailableBooks = function () {
   return this.find({ available: true });
 };
 
-export const Book = model<
-  IBook,
-  { findAvailableBooks: () => Promise<IBook[]> }
->("Book", bookSchema);
+export const Book = model<IBook>("Book", bookSchema);
