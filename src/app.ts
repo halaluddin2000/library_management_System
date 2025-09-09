@@ -18,7 +18,7 @@ const __dirnamePath = path.resolve();
 app.use(express.static(path.join(__dirnamePath, "dist")));
 
 // Catch-all route for React Router
-app.get("*", (req: Request, res: Response) => {
+app.get("/", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirnamePath, "dist", "index.html"));
 });
 
